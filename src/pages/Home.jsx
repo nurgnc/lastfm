@@ -14,7 +14,6 @@ function Home() {
   });
 
   useEffect(() => {}, [page]);
-  console.log(data);
   return (
     <Container>
       <h1>Top Artist List</h1>

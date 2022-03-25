@@ -14,7 +14,7 @@ const fetchTopAlbums = (artistName) =>
 
 const fetchTopTracks = (artistName) =>
   base.get(
-    `/?method=chart.gettoptracks&artist=${artistName}&api_key=${apiKey}&${format}`
+    `/?method=artist.gettoptracks&artist=${artistName}&api_key=${apiKey}&${format}`
   );
 
 export { fetchTopArtists, fetchTopAlbums, fetchTopTracks };

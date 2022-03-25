@@ -1,8 +1,22 @@
-function AlbumsAndTracksCard() {
+// css
+import { CardContent } from "../styles/AlbumsAndTracks.styled";
+
+function AlbumsAndTracksCard({ name, playcount, listeners, image }) {
+  const img = image[2]["#text"];
+
   return (
-    <div>
-      <h1>AlbumsAndTracksCard</h1>
-    </div>
+    <CardContent>
+      <div>
+        <img src={img} alt={name} />
+      </div>
+      <div>
+        <h4>{name}</h4>
+      </div>
+      <div>
+        {listeners && <p>{listeners} listeners</p>}
+        <p>{playcount} play</p>
+      </div>
+    </CardContent>
   );
 }
 
