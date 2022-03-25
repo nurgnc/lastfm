@@ -11,7 +11,7 @@ function ArtistCard({ name, playcount, listeners, image }) {
   const img = image[2]["#text"];
   let artistName = name;
   return (
-    <ArtistCardContent>
+    <ArtistCardContent justify="space-around">
       <div>
         <img src={img} alt={name} />
       </div>
@@ -19,14 +19,14 @@ function ArtistCard({ name, playcount, listeners, image }) {
         <span>Artist</span>
         <Link
           to={`/detail/${name}`}
-          onClick={() => dispatch(keepArtistInfo(artistName, image))}
+          onClick={() => dispatch(keepArtistInfo(artistName, image[2]))}
         >
           <h3>{name}</h3>
         </Link>
       </div>
       <div>
-        <p>listeners : {listeners}</p>
-        <p>playcount : {playcount}</p>
+        {listeners && <p>listeners : {listeners}</p>}
+        {playcount && <p>playcount : {playcount}</p>}
       </div>
     </ArtistCardContent>
   );

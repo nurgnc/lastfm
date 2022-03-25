@@ -8,7 +8,8 @@ import { useLocation } from "react-router-dom";
 // components
 import { AlbumsAndTracksCard } from "../components";
 // css
-import { Container, Grid } from "../styles/baseStyles";
+import { Container, Grid, Margin } from "../styles/baseStyles";
+import { ArtistCardContent } from "../styles/ArtistCard.styled";
 
 function DetailPage() {
   const { artist } = useSelector((state) => state);
@@ -34,7 +35,16 @@ function DetailPage() {
   console.log(artist);
   return (
     <Container>
-      <h1>DetailPage</h1>
+      {artist?.map((item, index) => (
+        <ArtistCardContent justify="flex-start" key={index}>
+          <Margin mr="15px">
+            <img src={item.image["#text"]} alt={item.artistName} />
+          </Margin>
+          <div>
+            <h2>{item.artistName}</h2>
+          </div>
+        </ArtistCardContent>
+      ))}
       <Grid col={2}>
         <div>
           <h2>Top Albums</h2>

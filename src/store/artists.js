@@ -11,7 +11,7 @@ const keepArtistInfo = (artistName, image) => ({
 const artistReducer = (artist = [], action) => {
   switch (action.type) {
     case KEEP_ARTIST_INFO:
-      return [action.payload, ...artist];
+      return [action.payload];
     default:
       return artist;
   }
