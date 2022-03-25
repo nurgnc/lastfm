@@ -15,12 +15,12 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/detail" element={<DetailPage />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

@@ -7,10 +7,14 @@ const format = "format=json";
 const fetchTopArtists = () =>
   base.get(`/?method=chart.gettopartists&api_key=${apiKey}&${format}`);
 
-const fetchTopAlbums = () =>
-  base.get(`/?method=artist.gettopalbums&api_key=${apiKey}&${format}`);
+const fetchTopAlbums = (artistName) =>
+  base.get(
+    `/?method=artist.gettopalbums&artist=${artistName}&api_key=${apiKey}&${format}`
+  );
 
-const fetchTopTracks = () =>
-  base.get(`/?method=chart.gettoptracks&api_key=${apiKey}&${format}`);
+const fetchTopTracks = (artistName) =>
+  base.get(
+    `/?method=chart.gettoptracks&artist=${artistName}&api_key=${apiKey}&${format}`
+  );
 
 export { fetchTopArtists, fetchTopAlbums, fetchTopTracks };
