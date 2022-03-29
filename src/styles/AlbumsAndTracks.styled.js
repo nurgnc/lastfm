@@ -2,11 +2,23 @@ import styled from "styled-components";
 
 export const CardContent = styled.div`
   display: flex;
-  flexdirection: row;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid gray;
+  border: 1px solid;
+  border-color: ${({ theme }) => theme.border};
   padding: 25px;
   border-radius: 10px;
   margin: 10px;
+  color: ${({ theme }) => theme.textColor};
+  @media (max-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+    min-height: 25rem;
+    justify-content: flex-start;
+    & h4,
+    p {
+      margin: 0;
+    }
+  }
 `;

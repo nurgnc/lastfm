@@ -7,6 +7,8 @@ const FooterStyled = styled.footer`
   align-items: center;
   justify-content: flex-end;
   padding: 0 8rem;
+  border-top: 1px solid;
+  border-top-color: ${({ theme }) => theme.border}
   background-color: ${({ theme }) => theme.bg};
   color: ${({ theme }) => theme.textColor};
   & > h6 {

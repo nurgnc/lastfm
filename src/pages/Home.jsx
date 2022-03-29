@@ -2,22 +2,23 @@ import { useEffect } from "react";
 import { useInfiniteQuery } from "react-query";
 import { fetchTopArtists } from "../api";
 // components
-import { ArtistCard } from "../components";
+import { ArtistCard, ScrollToTop } from "../components";
 // css
 import { Container, Grid } from "../styles/baseStyles";
 
 function Home() {
-  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
-    ["topArtists"],
-    ({ pageParam = 1 }) => fetchTopArtists(pageParam),
-    {
-      getNextPageParam: (lastPage, allPages) => {
-        const maxPages = lastPage.data.artists["@attr"].perPage;
-        const nextPage = parseInt(lastPage.data.artists["@attr"].page) + 1;
-        return nextPage <= maxPages ? nextPage : undefined;
-      },
-    }
-  );
+  const { data, hasNextPage, fetchNextPage, isFetching, status } =
+    useInfiniteQuery(
+      ["topArtists"],
+      ({ pageParam = 1 }) => fetchTopArtists(pageParam),
+      {
+        getNextPageParam: (lastPage, allPages) => {
+          const maxPages = lastPage.data.artists["@attr"].perPage;
+          const nextPage = parseInt(lastPage.data.artists["@attr"].page) + 1;
+          return nextPage <= maxPages ? nextPage : undefined;
+        },
+      }
+    );
 
   const handleScroll = async (e) => {
     let fetching = false;
@@ -39,7 +40,7 @@ function Home() {
   return (
     <Container>
       <h1>Top Artist List</h1>
-      <Grid col={2}>
+      <Grid col={2} resCol={1}>
         {data?.pages.map((page) =>
           page.data.artists.artist.map((item, index) => (
             <ArtistCard
@@ -52,6 +53,7 @@ function Home() {
           ))
         )}
       </Grid>
+      <ScrollToTop />
     </Container>
   );
 }

@@ -9,6 +9,8 @@ export const Nav = styled.nav`
   justify-content: center;
   background: ${({ theme }) => theme.bg};
   z-index: 10;
+  border-bottom: 1px solid;
+  border-bottom-color: ${({ theme }) => theme.border};
 `;
 
 export const StyledLink = styled(Link)`

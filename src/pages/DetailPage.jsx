@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 // location
 import { useLocation } from "react-router-dom";
 // components
-import { AlbumsAndTracksCard } from "../components";
+import { AlbumsAndTracksCard, ScrollToTop } from "../components";
 // css
 import { Container, Grid, Margin } from "../styles/baseStyles";
 import { ArtistCardContent } from "../styles/ArtistCard.styled";
@@ -85,7 +85,7 @@ function DetailPage() {
           </div>
         </ArtistCardContent>
       ))}
-      <Grid col={2}>
+      <Grid col={2} resCol={2}>
         <div>
           <h2>Top Albums</h2>
           {topAlbums?.pages.map((page) =>
@@ -116,6 +116,7 @@ function DetailPage() {
           )}
         </div>
       </Grid>
+      <ScrollToTop />
     </Container>
   );
 }

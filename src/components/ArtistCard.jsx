@@ -4,7 +4,7 @@ import { keepArtistInfo } from "../store/artists";
 // route link
 import { Link } from "react-router-dom";
 // css
-import { ArtistCardContent } from "../styles/ArtistCard.styled";
+import { ArtistCardContent, ArtistTitle } from "../styles/ArtistCard.styled";
 
 function ArtistCard({ name, playcount, listeners, image }) {
   const dispatch = useDispatch();
@@ -13,10 +13,15 @@ function ArtistCard({ name, playcount, listeners, image }) {
   return (
     <ArtistCardContent justify="space-around">
       <div>
-        <img src={img} alt={name} />
+        <Link
+          to={`/detail/${name}`}
+          onClick={() => dispatch(keepArtistInfo(artistName, image[2]))}
+        >
+          <img src={img} alt={name} />
+        </Link>
       </div>
       <div>
-        <span>Artist</span>
+        <ArtistTitle>Artist</ArtistTitle>
         <Link
           to={`/detail/${name}`}
           onClick={() => dispatch(keepArtistInfo(artistName, image[2]))}

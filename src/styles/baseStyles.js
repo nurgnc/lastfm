@@ -13,6 +13,9 @@ export const Container = styled.div`
   min-height: ${(props) => props.height};
   @media (max-width: 1400px) {
     width: 1200px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
   }
 `;
 
@@ -56,10 +59,10 @@ export const Flex = styled.div`
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(${(props) => props.col}, 5fr);
-  grid-gap: 30px;
+  grid-gap: 20px;
   @media (max-width: 896px) {
     display: inline-grid;
-    grid-template-columns: repeat(1, 5fr);
+    grid-template-columns: repeat(${(props) => props.resCol}, 5fr);
     grid-gap: 15px;
   }
 `;

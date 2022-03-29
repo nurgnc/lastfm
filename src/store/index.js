@@ -1,4 +1,8 @@
 import { combineReducers, createStore } from "redux";
+// redux persist
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+// reducers
 import artistReducer from "./artists";
 import themeReducer from "./theme";
 
@@ -8,6 +12,13 @@ const rootReducer = combineReducers({
   theme: themeReducer,
 });
 
-const store = createStore(rootReducer);
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["theme", "artist"],
+};
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = createStore(persistedReducer);
+export const persistor = persistStore(store);
