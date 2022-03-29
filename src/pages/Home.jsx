@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useInfiniteQuery } from "react-query";
 import { fetchTopArtists } from "../api";
 // components
@@ -7,52 +7,50 @@ import { ArtistCard } from "../components";
 import { Container, Grid } from "../styles/baseStyles";
 
 function Home() {
-  // const [page, setPage] = useState(1);
-
-  const { data } = useInfiniteQuery(
+  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
     ["topArtists"],
     ({ pageParam = 1 }) => fetchTopArtists(pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
         const maxPages = lastPage.data.artists["@attr"].perPage;
-        console.log("lastPage", allPages);
+        const nextPage = parseInt(lastPage.data.artists["@attr"].page) + 1;
+        return nextPage <= maxPages ? nextPage : undefined;
       },
-    },
-    {
-      // select: (data) => data.data.artists.artist,
     }
   );
 
-  const handleScroll = (e) => {
+  const handleScroll = async (e) => {
     let fetching = false;
     const { scrollHeight, scrollTop, clientHeight } =
       e?.target.scrollingElement;
     if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.5) {
       fetching = true;
-      // console.log("hi");
-      // setPage(page + 1);
+      if (hasNextPage) await fetchNextPage();
       fetching = false;
     }
   };
-
-  console.log(data);
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-  }, []);
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, [hasNextPage]);
 
   return (
     <Container>
       <h1>Top Artist List</h1>
       <Grid col={2}>
-        {/* {data?.data.artists.artist.map((item, index) => (
-          <ArtistCard
-            key={index}
-            name={item.name}
-            playcount={item.playcount}
-            listeners={item.listeners}
-            image={item.image}
-          />
-        ))} */}
+        {data?.pages.map((page) =>
+          page.data.artists.artist.map((item, index) => (
+            <ArtistCard
+              key={index}
+              name={item.name}
+              playcount={item.playcount}
+              listeners={item.listeners}
+              image={item.image}
+            />
+          ))
+        )}
       </Grid>
     </Container>
   );
