@@ -57,12 +57,7 @@ export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(${(props) => props.col}, 5fr);
   grid-gap: 30px;
-  @media (max-width: 768px) {
-    display: inline-grid;
-    grid-template-columns: repeat(2, 5fr);
-    grid-gap: 15px;
-  }
-  @media (max-width: 620px) {
+  @media (max-width: 896px) {
     display: inline-grid;
     grid-template-columns: repeat(1, 5fr);
     grid-gap: 15px;

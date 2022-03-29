@@ -11,7 +11,7 @@ function ThemeButton() {
   const dispatch = useDispatch();
   const { theme } = useSelector((state) => state);
   return (
-    <section>
+    <>
       {theme === "dark" ? (
         <ThemeButtons
           type="button"
@@ -29,7 +29,7 @@ function ThemeButton() {
           <BsFillMoonStarsFill size={22} />
         </ThemeButtons>
       )}
-    </section>
+    </>
   );
 }
 

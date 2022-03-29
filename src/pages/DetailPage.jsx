@@ -32,7 +32,7 @@ function DetailPage() {
     }
   );
 
-  console.log(artist);
+  // console.log(topAlbums);
   return (
     <Container>
       {artist?.map((item, index) => (
