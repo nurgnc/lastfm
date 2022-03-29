@@ -9,8 +9,10 @@ import { useLocation } from "react-router-dom";
 // components
 import { AlbumsAndTracksCard, ScrollToTop } from "../components";
 // css
-import { Container, Grid, Margin } from "../styles/baseStyles";
+import { Container, Grid, Margin, Flex } from "../styles/baseStyles";
 import { ArtistCardContent } from "../styles/ArtistCard.styled";
+// loading gif
+import loading from "../assets/loading.svg";
 
 function DetailPage() {
   const { artist } = useSelector((state) => state);
@@ -21,17 +23,16 @@ function DetailPage() {
     data: topAlbums,
     hasNextPage,
     fetchNextPage,
+    status,
   } = useInfiniteQuery(
     ["topAlbums", artistName],
     ({ pageParam = 1 }) => fetchTopAlbums(artistName, pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
-        // console.log("albummmm:::", lastPage);
         const maxPages = lastPage.data.topalbums["@attr"].perPage;
         const nextPage = parseInt(lastPage.data.topalbums["@attr"].page) + 1;
         return nextPage <= maxPages ? nextPage : undefined;
       },
-      // select: (data) => data.data.topalbums.album,
     }
   );
 
@@ -39,17 +40,16 @@ function DetailPage() {
     data: topTracks,
     hasNextPage: hasNextPageTrack,
     fetchNextPage: fetchNextPageTrack,
+    status: statusTrack,
   } = useInfiniteQuery(
     ["topTracks", artistName],
     () => fetchTopTracks(artistName),
     {
       getNextPageParam: (lastPage, allPages) => {
-        // console.log("trackkkkk:::", lastPage);
         const maxPages = lastPage.data.toptracks["@attr"].perPage;
         const nextPage = parseInt(lastPage.data.toptracks["@attr"].page) + 1;
         return nextPage <= maxPages ? nextPage : undefined;
       },
-      // select: (data) => data.data.toptracks.track,
     }
   );
 
@@ -116,6 +116,11 @@ function DetailPage() {
           )}
         </div>
       </Grid>
+      {status === "success" && (
+        <Flex flexDirection="row" justify="center">
+          <img src={loading} alt="loading" />
+        </Flex>
+      )}
       <ScrollToTop />
     </Container>
   );

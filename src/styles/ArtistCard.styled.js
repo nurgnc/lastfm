@@ -11,6 +11,15 @@ export const ArtistCardContent = styled.div`
   border-radius: 10px;
   margin: 10px;
   color: ${({ theme }) => theme.textColor};
+  @media (max-width: 640px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    & h4,
+    p {
+      margin: 0;
+    }
+  }
 `;
 
 export const ArtistTitle = styled.span`

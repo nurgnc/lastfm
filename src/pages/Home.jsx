@@ -4,7 +4,9 @@ import { fetchTopArtists } from "../api";
 // components
 import { ArtistCard, ScrollToTop } from "../components";
 // css
-import { Container, Grid } from "../styles/baseStyles";
+import { Container, Grid, Flex } from "../styles/baseStyles";
+// loading gif
+import loading from "../assets/loading.svg";
 
 function Home() {
   const { data, hasNextPage, fetchNextPage, isFetching, status } =
@@ -53,6 +55,11 @@ function Home() {
           ))
         )}
       </Grid>
+      {status === "success" && (
+        <Flex flexDirection="row" justify="center">
+          <img src={loading} alt="loading" />
+        </Flex>
+      )}
       <ScrollToTop />
     </Container>
   );
