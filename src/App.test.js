@@ -1,8 +1,28 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import { createMemoryHistory } from "history";
+// router
+import { BrowserRouter, Router } from "react-router-dom";
+// react-query
+import { QueryClient, QueryClientProvider } from "react-query";
+// redux
+import { Provider } from "react-redux";
+import { store } from "./store";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+const queryClient = new QueryClient();
+test("home page", () => {
+  const history = createMemoryHistory();
+  const route = "/";
+  history.push(route);
+  render(
+    <BrowserRouter>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
+      </Provider>
+    </BrowserRouter>
+  );
+
+  expect(history.location.pathname).toBe("/");
 });

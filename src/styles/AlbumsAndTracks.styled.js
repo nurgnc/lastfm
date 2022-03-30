@@ -5,6 +5,7 @@ export const CardContent = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  min-height: 15rem;
   border: 1px solid;
   border-color: ${({ theme }) => theme.border};
   padding: 25px;

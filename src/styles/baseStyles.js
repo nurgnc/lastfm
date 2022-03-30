@@ -59,7 +59,7 @@ export const Flex = styled.div`
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(${(props) => props.col}, 5fr);
-  grid-gap: 20px;
+  grid-gap: 30px;
   @media (max-width: 896px) {
     display: inline-grid;
     grid-template-columns: repeat(${(props) => props.resCol}, 5fr);
