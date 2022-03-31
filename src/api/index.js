@@ -9,14 +9,14 @@ const fetchTopArtists = (pageNum) =>
     `/?method=chart.gettopartists&page=${pageNum}&api_key=${apiKey}&${format}`
   );
 
-const fetchTopAlbums = (artistName) =>
+const fetchTopAlbums = (artistName, pageNum) =>
   base.get(
-    `/?method=artist.gettopalbums&artist=${artistName}&api_key=${apiKey}&${format}`
+    `/?method=artist.gettopalbums&artist=${artistName}&page=${pageNum}&api_key=${apiKey}&${format}`
   );
 
-const fetchTopTracks = (artistName) =>
+const fetchTopTracks = (artistName, pageNum) =>
   base.get(
-    `/?method=artist.gettoptracks&artist=${artistName}&api_key=${apiKey}&${format}`
+    `/?method=artist.gettoptracks&artist=${artistName}&page=${pageNum}&api_key=${apiKey}&${format}`
   );
 
 export { fetchTopArtists, fetchTopAlbums, fetchTopTracks };

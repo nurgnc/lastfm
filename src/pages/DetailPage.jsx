@@ -30,7 +30,8 @@ function DetailPage() {
     {
       getNextPageParam: (lastPage, allPages) => {
         const maxPages = lastPage.data.topalbums["@attr"].perPage;
-        const nextPage = parseInt(lastPage.data.topalbums["@attr"].page) + 3;
+        const nextPage = parseInt(lastPage.data.topalbums["@attr"].page) + 2;
+        console.log(nextPage);
         return nextPage <= maxPages ? nextPage : undefined;
       },
     }
@@ -43,11 +44,12 @@ function DetailPage() {
     status: statusTrack,
   } = useInfiniteQuery(
     ["topTracks", artistName],
-    () => fetchTopTracks(artistName),
+    ({ pageParam = 1 }) => fetchTopTracks(artistName, pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
         const maxPages = lastPage.data.toptracks["@attr"].perPage;
-        const nextPage = parseInt(lastPage.data.toptracks["@attr"].page) + 3;
+        const nextPage = parseInt(lastPage.data.toptracks["@attr"].page) + 2;
+        console.log(nextPage);
         return nextPage <= maxPages ? nextPage : undefined;
       },
     }
