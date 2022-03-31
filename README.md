@@ -28,4 +28,4 @@
 
 ## Demo
 
- ![GIF](src/assets/LastFM.jpg)
+ ![GIF](src/assets/LastFM.gif)
