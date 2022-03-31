@@ -116,7 +116,7 @@ function DetailPage() {
           )}
         </div>
       </Grid>
-      {status === "success" && (
+      {(status !== "loading" || statusTrack !== "loading") && (
         <Flex flexDirection="row" justify="center">
           <img src={loading} alt="loading" />
         </Flex>
