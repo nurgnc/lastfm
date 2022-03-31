@@ -30,7 +30,7 @@ function DetailPage() {
     {
       getNextPageParam: (lastPage, allPages) => {
         const maxPages = lastPage.data.topalbums["@attr"].perPage;
-        const nextPage = parseInt(lastPage.data.topalbums["@attr"].page) + 2;
+        const nextPage = parseInt(lastPage.data.topalbums["@attr"].page) + 3;
         return nextPage <= maxPages ? nextPage : undefined;
       },
     }
@@ -47,7 +47,7 @@ function DetailPage() {
     {
       getNextPageParam: (lastPage, allPages) => {
         const maxPages = lastPage.data.toptracks["@attr"].perPage;
-        const nextPage = parseInt(lastPage.data.toptracks["@attr"].page) + 1;
+        const nextPage = parseInt(lastPage.data.toptracks["@attr"].page) + 3;
         return nextPage <= maxPages ? nextPage : undefined;
       },
     }
