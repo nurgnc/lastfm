@@ -30,7 +30,7 @@ function DetailPage() {
     {
       getNextPageParam: (lastPage, allPages) => {
         const maxPages = lastPage.data.topalbums["@attr"].perPage;
-        const nextPage = parseInt(lastPage.data.topalbums["@attr"].page) + 1;
+        const nextPage = parseInt(lastPage.data.topalbums["@attr"].page) + 2;
         return nextPage <= maxPages ? nextPage : undefined;
       },
     }

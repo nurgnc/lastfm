@@ -9,18 +9,17 @@ import { Container, Grid, Flex } from "../styles/baseStyles";
 import loading from "../assets/loading.svg";
 
 function Home() {
-  const { data, hasNextPage, fetchNextPage, isFetching, status } =
-    useInfiniteQuery(
-      ["topArtists"],
-      ({ pageParam = 1 }) => fetchTopArtists(pageParam),
-      {
-        getNextPageParam: (lastPage, allPages) => {
-          const maxPages = lastPage.data.artists["@attr"].perPage;
-          const nextPage = parseInt(lastPage.data.artists["@attr"].page) + 1;
-          return nextPage <= maxPages ? nextPage : undefined;
-        },
-      }
-    );
+  const { data, hasNextPage, fetchNextPage, status } = useInfiniteQuery(
+    ["topArtists"],
+    ({ pageParam = 1 }) => fetchTopArtists(pageParam),
+    {
+      getNextPageParam: (lastPage, allPages) => {
+        const maxPages = lastPage.data.artists["@attr"].perPage;
+        const nextPage = parseInt(lastPage.data.artists["@attr"].page) + 2;
+        return nextPage <= maxPages ? nextPage : undefined;
+      },
+    }
+  );
 
   const handleScroll = async (e) => {
     let fetching = false;
