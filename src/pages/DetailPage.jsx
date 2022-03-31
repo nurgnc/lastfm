@@ -30,7 +30,7 @@ function DetailPage() {
     {
       getNextPageParam: (lastPage, allPages) => {
         const maxPages = lastPage.data.topalbums["@attr"].perPage;
-        const nextPage = parseInt(lastPage.data.topalbums["@attr"].page) + 2;
+        const nextPage = parseInt(lastPage.data.topalbums["@attr"].page) + 1;
         console.log(nextPage);
         return nextPage <= maxPages ? nextPage : undefined;
       },
@@ -48,7 +48,7 @@ function DetailPage() {
     {
       getNextPageParam: (lastPage, allPages) => {
         const maxPages = lastPage.data.toptracks["@attr"].perPage;
-        const nextPage = parseInt(lastPage.data.toptracks["@attr"].page) + 2;
+        const nextPage = parseInt(lastPage.data.toptracks["@attr"].page) + 1;
         console.log(nextPage);
         return nextPage <= maxPages ? nextPage : undefined;
       },
@@ -118,7 +118,7 @@ function DetailPage() {
           )}
         </div>
       </Grid>
-      {(status !== "loading" || statusTrack !== "loading") && (
+      {status !== "loading" && (
         <Flex flexDirection="row" justify="center">
           <img src={loading} alt="loading" />
         </Flex>
