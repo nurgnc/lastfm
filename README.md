@@ -24,6 +24,8 @@
 :rocket: Redux Persist <br />
 :rocket: Axios <br />
 :rocket: Styled Components <br />
+:rocket: React-Testing-Library <br />
+:rocket: StoryBook <br />
 :rocket: <a href="https://www.last.fm/api"> Last FM API </a> <br />
 
 ## Demo
