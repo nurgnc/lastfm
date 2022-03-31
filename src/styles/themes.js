@@ -1,15 +1,15 @@
 const themes = {
   light: {
-    bg: "#ECB390",
+    bg: "#E4CDA7",
     textColor: "#000",
     hover: "#BA0000",
     border: "#000",
   },
   dark: {
     bg: "#000",
-    textColor: "#fff",
+    textColor: "#E4CDA7",
     hover: "#BA0000",
-    border: "#ECB390",
+    border: "#E4CDA7",
   },
   mobile: "768px",
 };

@@ -31,6 +31,6 @@ export const ThemeButtons = styled.button`
   margin: 0 10px;
   padding: 8px 10px;
   border: none;
-  background: #fff;
+  background: transparent;
   cursor: pointer;
 `;

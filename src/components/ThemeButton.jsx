@@ -1,15 +1,18 @@
 import React from "react";
 // icons
-import { BsFillMoonStarsFill, BsMoonStars } from "react-icons/bs";
+import { BsFillMoonStarsFill } from "react-icons/bs";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { setTheme } from "../store/theme";
 // css
 import { ThemeButtons } from "../styles/Navbar.styled";
+// themes
+import themes from "../styles/themes";
 
-function ThemeButton() {
+function ThemeButton({ variant }) {
   const dispatch = useDispatch();
   const { theme } = useSelector((state) => state);
+  variant = theme;
   return (
     <>
       {theme === "dark" ? (
@@ -18,7 +21,7 @@ function ThemeButton() {
           theme={theme}
           onClick={() => dispatch(setTheme("light"))}
         >
-          <BsMoonStars size={22} />
+          <BsFillMoonStarsFill size={25} color={themes[theme].textColor} />
         </ThemeButtons>
       ) : (
         <ThemeButtons
@@ -26,7 +29,7 @@ function ThemeButton() {
           theme={theme}
           onClick={() => dispatch(setTheme("dark"))}
         >
-          <BsFillMoonStarsFill size={22} />
+          <BsFillMoonStarsFill size={25} color={themes[theme].textColor} />
         </ThemeButtons>
       )}
     </>

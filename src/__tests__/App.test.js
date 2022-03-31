@@ -6,8 +6,11 @@ import { BrowserRouter, Router } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 // redux
 import { Provider } from "react-redux";
-import { store } from "./store";
-import App from "./App";
+import { store } from "../store";
+import App from "../App";
+import { DetailPage } from "../pages";
+
+// routing tests
 
 const queryClient = new QueryClient();
 test("home page", () => {
@@ -25,4 +28,21 @@ test("home page", () => {
   );
 
   expect(history.location.pathname).toBe("/");
+});
+
+test("detail page", () => {
+  const history = createMemoryHistory();
+  const route = "/detail";
+  history.push(route);
+  render(
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <Router location={history.location} navigator={history}>
+          <DetailPage />
+        </Router>
+      </QueryClientProvider>
+    </Provider>
+  );
+
+  expect(history.location.pathname).toBe("/detail");
 });

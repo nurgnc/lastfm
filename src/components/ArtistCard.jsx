@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // css
 import { ArtistCardContent, ArtistTitle } from "../styles/ArtistCard.styled";
 
-function ArtistCard({ name, playcount, listeners, image }) {
+function ArtistCard({ name, playcount, listeners, image, ...args }) {
   const dispatch = useDispatch();
   const img = image[2]["#text"];
   let artistName = name;
