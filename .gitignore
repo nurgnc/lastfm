@@ -12,7 +12,7 @@
 /build
 
 # api keys
-.env .local
+.env*.local
 
 # misc
 .DS_Store
